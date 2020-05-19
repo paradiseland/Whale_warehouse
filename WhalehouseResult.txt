@@ -1,0 +1,9 @@
+给出假设：
+1.单列SR流程 retrieve->pick->store
+2.暂不存在换道生产，PST主要用于推出故障PSB
+3.不做分区或者依据种类进行分区，分区设计考虑产品种类和turnover
+具体假设：
+1.随机到达
+2.存储策略：随机[意味着reshuffle]
+3.dual-command：retrieve&store中间加一个转换在拣选的等待时间。
+4.非堆栈顶部产品的获取，获取可用产品
