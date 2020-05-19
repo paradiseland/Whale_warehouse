@@ -14,12 +14,9 @@ class Warehouse:
         self.init()
 
     def init(self):
-        record = []
-        for i in range(self.width):
-            record.append([])
-            for j in range(self.length):
-                record[i].append(Stack(H,TAU))
-        self.record = record
+        # TODO: initialize the record of stacks
+        self.record = [[Stack() for i in range(self.length)]
+                       for j in range(self.width)]
 
     @property
     def capacity(self):

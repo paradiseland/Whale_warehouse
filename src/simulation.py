@@ -1,7 +1,8 @@
 # 重点在于 Storage policy and Reshuffling policy
 import simpy
 import random
-from function import rand_product
+from function import rand_place
+from PSB import PSB
 
 
 class Simulation:
@@ -56,21 +57,49 @@ class Simulation:
 
     def retrieve_store(self, env, name, warehouse):
         """
-        z
+        work flow of the psb
         """
         timepoint_arrive = env.now
         yield env.timeout(0)
+        # dest first dimension is the width code.
+        # that is the ordianl number of workstation and psb.
+        # TODO: choose one of the arrival: designated product/designated place.
+        dest = rand_place(warehouse)
+        line = dest[0]
+        psb = psbs[line]
+        # TODO: workstation = [line, 0 , 0, 0]
+        with psb.request() as req_psb:
+            yield req_psb
+            
+            label_psb_start = env.now
+            T_storage = psb.get_H_transport_time(workstation, dest)
+            if psb.assignment_reshuffle:
+                T_reshuffle = psb.reshuffle()
+            else:
+                T_reshuffle = 0
 
-        dest = rand_product(warehouse)
+            T_retrievebin = psb.retrieve_bin(dest, len(warehouse[dest]))
+
+            T_retrieval_workstation = psb.get_H_transport_time(
+                place, workstation)
+
+            T_workstation = T_storage + T_reshuffle + \
+                T_retrievebin + T_retrieval_workstation
+            env.timeout()
+
         warehouse.retrieve(dest)
+
         
 
 
 
 if __name__ == "__main__":
+    width = 10
+
+
     env = simpy.Environment()
     lambd = []
-
+    psbs = [PSB(env, v_h, v_v, psb_w) for i in range(width)]
 
 
 stack : 3-dim [[[], [], [], ]]
