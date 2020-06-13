@@ -20,3 +20,14 @@ class Stack:
 
     def pop(self):
         return self.items.pop()
+
+    def pop_ordered(self, designated_place):
+        """
+        ------------
+        Return
+        designated place and blocking bins as list.
+        """
+        poped = (self.items[designated_place], self.items[designated_place+1:])
+
+        self.items = self.items[:designated_place]
+        return poped

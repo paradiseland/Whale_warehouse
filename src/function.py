@@ -1,13 +1,15 @@
-
 """
 define some useful function mainly about randomly storage.
 """
-def get_closest_PSB(fleet, place):
+
+
+def get_closest_psb(fleet, place):
     dis = float('inf')
     for i in fleet:
         if i.state == 1:
             if place[0] - i.index < dis:
                 chosen = i.index
+
     return chosen
 
 
