@@ -3,6 +3,7 @@ import simpy
 import random
 from function import rand_place
 from PSB import PSB
+from PST import PST
 
 
 class Simulation:
@@ -29,9 +30,9 @@ class Simulation:
                                                             to storage rack.
     """
 
-    def __init__(self, env, psbs, pst):
+    def __init__(self, env, psb, pst):
         self.env = env
-        self.SR = env.process(self.souce_storage(env, psbs, pst,))
+        self.SR = env.process(self.source_order(env, psb, pst,))
 
     @property
     def E_C(self):
@@ -41,7 +42,7 @@ class Simulation:
     def U_V(self):
         return 0
 
-    def source_order(self, psbs, pst, stack, warehouse):
+    def source_order(self, psb, pst, warehouse):
         """
         In simulation time, keeping registering [Storage&Retrieval] process
         into the simulation environment.
@@ -49,11 +50,11 @@ class Simulation:
         ind_order = 0
         while True:
             ind_order += 1
-            o = self.retrieve_store(env, f'STORAGE {ind_order}', psbs,
+            o = self.retrieve_store(self.env, f'STORAGE {ind_order}', psb,
                                     pst, warehouse)
-            env.process(o)
-            t_OrderArrive = random.expovariate(lambd)
-            yield env.timeout(t_OrderArrive)
+            self.env.process(o)
+            t_order_arrive = random.expovariate(lambda_)
+            yield self.env.timeout(t_order_arrive)
 
     def retrieve_store(self, env, name, warehouse):
         """
@@ -89,17 +90,23 @@ class Simulation:
 
         warehouse.retrieve(dest)
 
-        
-
-
 
 if __name__ == "__main__":
+    num_of_psb = 10
     width = 10
+    length = 20
+
+    # storage_policy = ["dedicated", "shared", "random&zoned"]
+    storage_policy = "shared"
+    # reshuffling_policy = ["immediate", "delayed"]
+    reshuffling_policy = "immediate"
+    psb_dwell_policy = ""
+    constraint_psb = 3
 
 
-    env = simpy.Environment()
-    lambd = []
-    psbs = [PSB(env, v_h, v_v, psb_w) for i in range(width)]
+    environment = simpy.Environment()
+    lambda_ = []
+    psb_s = [PSB(env, v_h, v_v, psb_w) for i in range(width)]
 
 
 stack : 3-dim [[[], [], [], ]]

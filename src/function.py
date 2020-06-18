@@ -1,6 +1,8 @@
 """
 define some useful function mainly about randomly storage.
 """
+def rand_place() -> list:
+    pass
 
 
 def get_closest_psb(fleet, place):

@@ -1,4 +1,3 @@
-import numpy
 from stack import Stack
 from CONSTANT import TAU
 
