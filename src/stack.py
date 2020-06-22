@@ -11,7 +11,7 @@ class Stack:
         return self.items == []
 
     def is_peek(self, tier):
-        return tier == self.size()
+        return tier == self.size()-1
 
     def size(self):
         return len(self.items)

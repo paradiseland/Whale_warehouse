@@ -4,6 +4,7 @@ from CONSTANT import *
 """
 Current line or adjacent psb robot will be designated to the new order.
 """
+import logging
 
 
 # class PSB(Resource):
@@ -79,6 +80,7 @@ class PSB:
         reshuffle -> target bin go to temporarily place -> return blocking bins -> go to workstation.
         """
         target_bin_new_stack_y, _ = self.reshuffle_blocking_bin(warehouse, xy, stack_tier)
+        # logging.debug(f"current line = {self.current_line}, target y = {target_bin_new_stack_y}, xy = {xy}")
         time_target_bin_temporarily = self.transport_bin_to_destination(
                 stack_tier,
                 warehouse.record[self.current_line][target_bin_new_stack_y].size(), xy[1], target_bin_new_stack_y)
@@ -112,6 +114,7 @@ class PSB:
     def reshuffle_blocking_bin(self, warehouse, designated_bin_xy: tuple, target_bin):
         cur_stack = warehouse.record[designated_bin_xy[0]][designated_bin_xy[1]]
         cur_y = designated_bin_xy[1]
+
         # blocking_bins = cur_stack[target_bin + 1:]
 
         adjacent_stack = [n for m in [(cur_y + i, cur_y - i) for i in range(1, WIDTH)] for n in m if 0 < n <= LENGTH]
@@ -121,6 +124,7 @@ class PSB:
 
         while cur_stack.size() != target_bin+1:
             next_stack = warehouse.record[self.current_line][adjacent_stack[adjacent_place_chosen]]
+
             current_bin = cur_stack.size()
             next_bin = next_stack.size() + 1
             if next_stack.size() < HEIGHT_AVAILABLE:
@@ -129,9 +133,12 @@ class PSB:
                 next_stack.items.append(1)
                 time_reshuffle_blocking_bins += self.transport_bin_to_destination(
                         cur_y, adjacent_stack[adjacent_place_chosen], current_bin, next_bin)
-                adjacent_place_chosen += 1
             else:
                 pass
+            adjacent_place_chosen += 1
+            print(f"adjacent_chosen = {adjacent_place_chosen}, {adjacent_stack[adjacent_place_chosen]},{self.current_line}")
+            print(f"{warehouse.record[self.current_line][adjacent_stack[adjacent_place_chosen]].items}")
+            print(adjacent_stack)
 
         self.register_reshuffle(cur_y)
         return adjacent_stack[adjacent_place_chosen+1], time_reshuffle_blocking_bins

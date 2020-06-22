@@ -8,7 +8,7 @@ class Warehouse:
     Define a Warehouse class to get an available place and to save parameters of warehouse configuration.
     """
 
-    def __init__(self,cell):
+    def __init__(self, cell):
         self.cell = cell
         self.WIDTH = WIDTH
         self.LENGTH = LENGTH
@@ -70,4 +70,3 @@ class Warehouse:
         stack_tier = tmp - cum_sum[pre_place]
 
         return place, stack_tier
-
