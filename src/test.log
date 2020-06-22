@@ -1,0 +1,137 @@
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO       0.00, Order 1 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO       0.00, Order 1 target x,y=(4, 18), tier=4
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO       0.00, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO       0.00, Order 1 has seized the [psb_4]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO      31.78, Order 2 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO      31.78, Order 2 target x,y=(0, 17), tier=2
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO      31.78, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO      31.78, Order 2 has seized the [psb_0]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO      33.71, Order 3 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO      33.71, Order 3 target x,y=(2, 10), tier=1
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO      33.71, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO      33.71, Order 3 has seized the [psb_2]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO      48.49, Order 4 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO      48.49, Order 4 target x,y=(2, 8), tier=0
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO      48.49, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO      50.89, Order 5 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO      50.89, Order 5 target x,y=(1, 2), tier=3
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO      50.89, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO      50.89, Order 5 has seized the [psb_1]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO      51.04, Order 6 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO      51.04, Order 6 target x,y=(3, 20), tier=3
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO      51.04, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO      51.04, Order 6 has seized the [psb_3]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO      52.10, Order 7 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO      52.10, Order 7 target x,y=(1, 24), tier=1
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO      52.10, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO      55.21, Order 8 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO      55.21, Order 8 target x,y=(5, 17), tier=3
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO      55.21, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO      55.21, Order 8 has seized the [psb_5]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO      59.97, Order 9 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO      59.97, Order 9 target x,y=(4, 7), tier=3
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO      59.97, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO      59.97, Order 9 has seized the [psb_4]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO      62.82, Order 10 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO      62.82, Order 10 target x,y=(0, 25), tier=1
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO      62.82, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO      68.60, Order 11 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO      68.60, Order 11 target x,y=(6, 26), tier=4
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO      68.60, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO      68.60, Order 11 has seized the [psb_6]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO      75.56, Order 10 has seized the [psb_0]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO      78.13, Order 12 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO      78.13, Order 12 target x,y=(6, 8), tier=2
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO      78.13, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO      78.37, Order 4 has seized the [psb_2]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO      78.57, Order 7 has seized the [psb_1]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO      79.99, Order 13 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO      79.99, Order 13 target x,y=(8, 21), tier=0
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO      79.99, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO      79.99, Order 13 has seized the [psb_8]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO      88.36, Order 14 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO      88.36, Order 14 target x,y=(6, 8), tier=2
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO      88.36, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO      92.79, Order 12 has seized the [psb_6]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO     104.21, Order 15 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO     104.21, Order 15 target x,y=(5, 25), tier=2
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO     104.21, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO     104.24, Order 16 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO     104.24, Order 16 target x,y=(8, 14), tier=2
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO     104.24, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO     105.92, Order 17 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO     105.92, Order 17 target x,y=(2, 19), tier=0
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO     105.92, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO     108.42, Order 15 has seized the [psb_5]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO     112.54, Order 18 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO     112.54, Order 18 target x,y=(7, 14), tier=2
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO     112.54, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO     112.54, Order 18 has seized the [psb_7]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO     122.64, Order 19 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO     122.64, Order 19 target x,y=(1, 0), tier=1
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO     122.64, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO     129.19, Order 14 has seized the [psb_6]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO     130.30, Order 16 has seized the [psb_8]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO     130.98, Order 17 has seized the [psb_2]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO     131.00, Order 19 has seized the [psb_1]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO     147.93, Order 20 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO     147.93, Order 20 target x,y=(9, 3), tier=0
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO     147.93, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO     147.93, Order 20 has seized the [psb_9]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO     158.17, Order 21 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO     158.17, Order 21 target x,y=(0, 22), tier=0
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO     158.17, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO     158.17, Order 21 has seized the [psb_0]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO     158.78, Order 22 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO     158.78, Order 22 target x,y=(2, 16), tier=1
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO     158.78, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO     167.93, Order 23 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO     167.93, Order 23 target x,y=(9, 5), tier=4
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO     167.93, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO     170.20, Order 22 has seized the [psb_2]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO     176.40, Order 24 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO     176.40, Order 24 target x,y=(2, 18), tier=0
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO     176.40, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO     184.25, Order 25 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO     184.25, Order 25 target x,y=(5, 27), tier=3
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO     184.25, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO     184.25, Order 25 has seized the [psb_5]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO     184.26, Order 26 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO     184.26, Order 26 target x,y=(5, 29), tier=0
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO     184.26, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO     192.89, Order 27 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO     192.89, Order 27 target x,y=(0, 19), tier=2
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO     192.89, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO     193.51, Order 23 has seized the [psb_9]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO     194.89, Order 28 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO     194.89, Order 28 target x,y=(6, 25), tier=2
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO     194.89, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO     194.89, Order 28 has seized the [psb_6]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO     197.70, Order 29 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO     197.70, Order 29 target x,y=(2, 28), tier=1
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO     197.70, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO     198.62, Order 30 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO     198.62, Order 30 target x,y=(5, 22), tier=3
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO     198.62, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO     209.31, Order 27 has seized the [psb_0]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO     209.56, Order 31 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO     209.56, Order 31 target x,y=(1, 13), tier=6
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO     209.56, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO     209.56, Order 31 has seized the [psb_1]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO     209.57, Order 32 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO     209.57, Order 32 target x,y=(5, 18), tier=3
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO     209.57, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO     211.46, Order 33 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO     211.46, Order 33 target x,y=(0, 17), tier=0
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO     211.46, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO     211.95, Order 24 has seized the [psb_2]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO     214.22, Order 34 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO     214.22, Order 34 target x,y=(0, 28), tier=2
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO     214.22, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO     219.19, Order 35 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO     219.19, Order 35 target x,y=(9, 15), tier=0
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO     219.19, this line has a psb.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:89] INFO     219.68, Order 26 has seized the [psb_5]
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:73] INFO     222.09, Order 36 arrives.
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:80] INFO     222.09, Order 36 target x,y=(1, 25), tier=2
+Mon, 22 Jun 2020 08:52:56 simulation.py[line:85] INFO     222.09, this line has a psb.

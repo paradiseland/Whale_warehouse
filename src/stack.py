@@ -2,15 +2,16 @@ class Stack:
     """
     define a stack class to imitate operations in the stack of a warehouse.
     """
-    def __init__(self, H, TAU):
+    def __init__(self, h, h_available):
         self.items = []
-        self.available = int(H*(1-TAU))
+        self.height = h
+        self.height_available = h_available
 
     def is_empty(self):
         return self.items == []
 
-    def peek(self):
-        return self.items[len(self.items) - 1]
+    def is_peek(self, tier):
+        return tier == self.size()
 
     def size(self):
         return len(self.items)
@@ -21,13 +22,3 @@ class Stack:
     def pop(self):
         return self.items.pop()
 
-    def pop_ordered(self, designated_place):
-        """
-        ------------
-        Return
-        designated place and blocking bins as list.
-        """
-        poped = (self.items[designated_place], self.items[designated_place+1:])
-
-        self.items = self.items[:designated_place]
-        return poped

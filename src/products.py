@@ -2,7 +2,7 @@ class Products:
     """
     Define a Products class to describe the characteristics of various products.
     """
-    def __init__(self):
+    def __init__(self, total_num):
 
         self.total_num = total_num
         self.category = []
@@ -10,6 +10,7 @@ class Products:
         self.safety_stock = []
         self.required_space = []
 
-        def stacks_demand(self):
-            from math import ceil
-            N_st[i] = ceil(a/H_)
+    def stacks_demand(self):
+        from math import ceil
+        pass
+
