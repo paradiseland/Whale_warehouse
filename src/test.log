@@ -1,6 +1,68 @@
-Mon, 22 Jun 2020 11:10:32 simulation.py[line:74] INFO       0.00, Order 1 arrives.
-Mon, 22 Jun 2020 11:10:56 simulation.py[line:83] INFO       0.00, Order 1 target x,y=(1, 3), tier=1
-Mon, 22 Jun 2020 11:10:56 simulation.py[line:88] INFO       0.00, this line has a psb.
-Mon, 22 Jun 2020 11:10:56 simulation.py[line:94] INFO       0.00, Order 1 has seized the [psb_1]
-Mon, 22 Jun 2020 11:10:56 simulation.py[line:119] INFO       0.00, target is not on the peek of the stack. peek:5
-Mon, 22 Jun 2020 11:10:56 simulation.py[line:124] INFO       0.60, [psb_1] has arrived at the retrieve point (1, 3).
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:73] INFO       0.00, Order 1 arrives.
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:82] INFO       0.00, Order 1 target x,y=(5, 23), tier=1
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:87] INFO       0.00, this line has a psb.
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:93] INFO       0.00, Order 1 has seized the [psb_5]
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:118] INFO       0.00, target is not on the peek of the stack. peek:5
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:123] INFO       4.60, [psb_5] has arrived at the retrieve point (5, 23).
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:73] INFO       4.93, Order 2 arrives.
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:82] INFO       4.93, Order 2 target x,y=(9, 5), tier=1
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:87] INFO       4.93, this line has a psb.
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:93] INFO       4.93, Order 2 has seized the [psb_9]
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:118] INFO       4.93, target is not on the peek of the stack. peek:3
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:123] INFO       5.93, [psb_9] has arrived at the retrieve point (9, 5).
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:73] INFO      15.10, Order 3 arrives.
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:82] INFO      15.10, Order 3 target x,y=(4, 5), tier=1
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:87] INFO      15.10, this line has a psb.
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:93] INFO      15.10, Order 3 has seized the [psb_4]
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:118] INFO      15.10, target is not on the peek of the stack. peek:6
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:73] INFO      15.34, Order 4 arrives.
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:82] INFO      15.34, Order 4 target x,y=(3, 15), tier=0
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:87] INFO      15.34, this line has a psb.
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:93] INFO      15.34, Order 4 has seized the [psb_3]
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:118] INFO      15.34, target is not on the peek of the stack. peek:5
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:123] INFO      16.10, [psb_4] has arrived at the retrieve point (4, 5).
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:123] INFO      18.34, [psb_3] has arrived at the retrieve point (3, 15).
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:73] INFO      29.31, Order 5 arrives.
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:82] INFO      29.31, Order 5 target x,y=(7, 14), tier=1
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:87] INFO      29.31, this line has a psb.
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:93] INFO      29.31, Order 5 has seized the [psb_7]
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:101] INFO      29.31, target is on the peek of that stack. peek:1
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:73] INFO      31.47, Order 6 arrives.
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:82] INFO      31.47, Order 6 target x,y=(0, 17), tier=1
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:87] INFO      31.47, this line has a psb.
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:93] INFO      31.47, Order 6 has seized the [psb_0]
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:118] INFO      31.47, target is not on the peek of the stack. peek:4
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:73] INFO      32.09, Order 7 arrives.
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:82] INFO      32.09, Order 7 target x,y=(9, 10), tier=4
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:87] INFO      32.09, this line has a psb.
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:106] INFO      32.11, [psb_7] has arrived at the target place.
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:130] INFO      33.36, Order 2 [psb_9] has finished the reshuffling and went to the workstation.
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:137] INFO      33.36, [psb_9] has been released at (9, -1)
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:145] INFO      33.36, Order 2 request the workstation
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:149] INFO      33.36, Order 2 seized the workstation
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:93] INFO      33.36, Order 7 has seized the [psb_9]
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:118] INFO      33.36, target is not on the peek of the stack. peek:6
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:123] INFO      34.87, [psb_0] has arrived at the retrieve point (0, 17).
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:123] INFO      35.56, [psb_9] has arrived at the retrieve point (9, 10).
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:73] INFO      39.84, Order 8 arrives.
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:82] INFO      39.84, Order 8 target x,y=(1, 29), tier=0
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:87] INFO      39.84, this line has a psb.
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:93] INFO      39.84, Order 8 has seized the [psb_1]
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:118] INFO      39.84, target is not on the peek of the stack. peek:3
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:154] INFO      43.91, workstation 9 has finished Order 2 picking up
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:163] INFO      43.91, Order 2_store has arrived
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:167] INFO      43.91, Order 2_store will be stored at (9, 28)
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:171] INFO      43.91, line 9 has a psb
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:113] INFO      45.14, [psb_7] has transported Order 5 at the target place.
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:137] INFO      45.14, [psb_7] has been released at (7, -1)
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:145] INFO      45.14, Order 5 request the workstation
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:149] INFO      45.14, Order 5 seized the workstation
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:73] INFO      45.53, Order 9 arrives.
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:82] INFO      45.53, Order 9 target x,y=(6, 4), tier=0
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:87] INFO      45.53, this line has a psb.
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:93] INFO      45.53, Order 9 has seized the [psb_6]
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:118] INFO      45.53, target is not on the peek of the stack. peek:5
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:73] INFO      45.56, Order 10 arrives.
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:82] INFO      45.56, Order 10 target x,y=(4, 3), tier=2
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:87] INFO      45.56, this line has a psb.
+Mon, 22 Jun 2020 11:17:29 simulation.py[line:123] INFO      45.64, [psb_1] has arrived at the retrieve point (1, 29).
