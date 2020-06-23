@@ -196,7 +196,7 @@ if __name__ == "__main__":
         level=logging.DEBUG,
         format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
         datefmt='%a, %d %b %Y %H:%M:%S',
-        filename='test.log',
+        filename='Result.log',
         filemode='w')
 
     # storage_policy = ["dedicated", "shared", "random&zoned"]
