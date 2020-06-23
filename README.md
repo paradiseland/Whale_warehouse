@@ -7,41 +7,41 @@
 
 > Whale_warehouse
 >
-> ​    src
+> ​----**src**
 >
-> ​        CONSTANT.py : input parameters. of warehouse
+> --------CONSTANT.py : input parameters. of warehouse
 >
-> ​		PSB.py : psb robot class
+> ​--------PSB.py : psb robot class
 >
-> ​		PSBs.py psb robots composed the fleet class
+> ​--------PSBs.py psb robots composed the fleet class
 >
-> ​		PST.py : pst robot class
+> --------PST.py : pst robot class
 >
-> ​		\__init__.py
+> ​--------\__init__.py
 >
-> ​	    cell.py : single storage bin class
+> ​--------cell.py : single storage bin class
 >
-> ​		products.py : waiting update
+> ​--------products.py : waiting update
 >
-> ​		simulation.py   **Main program**:include simulation flow
+> ​--------simulation.py   **Main program**:include simulation flow
 >
-> ​		stack.py : 
+> ​--------stack.py : 
 >
-> ​		test.log : **current result log**
+> ​--------test.log : **current result log**
 >
-> ​		warehouse.py
+> ​--------warehouse.py
 >
-> ​		workstation.py
+> ​--------workstation.py
 >
-> ​	Thinking
+> ​----**Thinking**
 >
-> ​		Sim_flowchart.png
+> --------Sim_flowchart.png
 >
-> ​		Sim_scenearios.png
+> --------Sim_scenearios.png
 >
-> ​		WhalehouseResult.txt
+> ​--------WhalehouseResult.txt
 >
-> ​		flowchart.vsdx
+> ​--------flowchart.vsdx
 
 Flow:
 >1. Order arrives at poisson process
