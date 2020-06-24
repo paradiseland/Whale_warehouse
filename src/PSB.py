@@ -40,6 +40,8 @@ class PSB:
         self.reshuffle_task = []
         self.state = 1
         self.resource = simpy.Resource(self.env)
+        # self.pick_weight = GOOD_WEIGHT
+        # self.power = 600  # 600W/h
 
     @property
     def horizontal_distance_sign(self):

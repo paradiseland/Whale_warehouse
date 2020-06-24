@@ -99,6 +99,9 @@ class Simulation:
                     logging.info(
                         "{:10.2f}, target is on the peek of that stack. peek:{}".format(
                             env.now, stack_tier))
+                    logging.info(
+                            "{:10.2f}, target warehouse record: {}".format(
+                                    env.now, self.warehouse.record[current_line][target_y].items))
                     time_psb2retrieve_point = psb.goto(order_place)
                     yield env.timeout(time_psb2retrieve_point)
                     logging.info(
@@ -116,6 +119,9 @@ class Simulation:
                     logging.info(
                         "{:10.2f}, target is not on the peek of the stack. peek:{}".format(
                             env.now, warehouse_record[current_line][target_y].size()))
+                    logging.info(
+                            "{:10.2f}, target warehouse record: {}".format(
+                                    env.now, self.warehouse.record[current_line][target_y].items))
                     time_psb2retrieve_point = psb.goto(order_place)
                     yield env.timeout(time_psb2retrieve_point)
                     logging.info(
@@ -161,7 +167,12 @@ class Simulation:
         logging.info(
                 "{:10.2f}, {}_store has arrived".format(
                         env.now, name))
-        target_y = random.randint(1, self.warehouse.LENGTH)
+        choose_height = self.warehouse.HEIGHT
+
+        while choose_height > self.warehouse.HEIGHT_AVAILABLE:
+            target_y = random.randint(0, self.warehouse.LENGTH-1)
+            choose_height = self.warehouse.record[line][target_y].size()
+
         logging.info(
                 "{:10.2f}, {}_store will be stored at {}".format(
                         env.now, name, (line, target_y)))
@@ -177,6 +188,7 @@ class Simulation:
                                 env.now, name, line))
 
                 # label_psb_start = env.now
+
                 time_store = psb.storage((line, target_y - 1), self.warehouse)
                 yield env.timeout(time_store)
                 logging.info(

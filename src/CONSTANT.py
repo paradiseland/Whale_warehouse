@@ -7,7 +7,7 @@ height = .33
 
 R = 30  # R is the number of robots.
 N_WORKSTATIONS = WIDTH
-ARRIVAL_RATE = 650/3600  # 650 orders/h
+ARRIVAL_RATE = 200/3600  # 650 orders/h
 TAU = .2      # Fraction of total storage space reserved for further growth
 GAMMA = .2    # Honeycombing effect factor
 N_STACKS = WIDTH * LENGTH
