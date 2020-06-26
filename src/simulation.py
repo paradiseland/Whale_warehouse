@@ -50,6 +50,14 @@ class Simulation:
     def utility_consumption(self):
         return 0
 
+    @property
+    def utility_psb(self):
+        return 0
+
+    @property
+    def turnover(self):
+        return 0
+
     def source_order(self):
         """
         In simulation time, keeping registering [Storage&Retrieval] process
@@ -189,16 +197,16 @@ class Simulation:
 
                 # label_psb_start = env.now
 
-                time_store = psb.storage((line, target_y - 1), self.warehouse)
+                time_store = psb.storage((line, target_y), self.warehouse)
                 yield env.timeout(time_store)
                 logging.info(
                         "{:10.2f}, {}_store has been finished".format(
                                 env.now, name))
                 psb.release()
-                psb.update_dwell_point((line, target_y - 1))
+                psb.update_dwell_point((line, target_y))
                 logging.info(
                         "{:10.2f}, [psb_{}]has been released at {}".format(
-                                env.now, line, (line, target_y - 1)))
+                                env.now, line, (line, target_y)))
         else:
             pass
 

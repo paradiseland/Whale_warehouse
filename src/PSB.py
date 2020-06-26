@@ -38,7 +38,7 @@ class PSB:
         self.current_line = i
         self.current_place = (self.current_line, 0)
         self.reshuffle_task = []
-        self.state = 1
+        self.state = 1  # initial state is idle
         self.resource = simpy.Resource(self.env)
         # self.pick_weight = GOOD_WEIGHT
         # self.power = 600  # 600W/h
@@ -72,7 +72,10 @@ class PSB:
             return t_1, t_2, 2 * t_1 + t_2
 
     def goto(self, target):
-        time_cur_place2target = self.get_horizontal_transport_time((target[1] - self.current_place[1]) * length)[-1]
+        """
+        compute the time consumption from current place to target place
+        """
+        _, _, time_cur_place2target = self.get_horizontal_transport_time(abs(target[1] - self.current_place[1]) * length)
         self.update_dwell_point(target)
         return time_cur_place2target
 
@@ -114,18 +117,22 @@ class PSB:
         self.update_dwell_point((self.current_line, 0))
         return total_time
 
-    def reshuffle_blocking_bin(self, warehouse, designated_bin_xy: tuple, target_bin):
+    def reshuffle_blocking_bin(self, warehouse, designated_bin_xy: tuple, stack_tier):
+        """
+        by reshuffle the bin of certain stack, get the target bin blocking by some bins.
+        """
         cur_stack = warehouse.record[designated_bin_xy[0]][designated_bin_xy[1]]
         cur_y = designated_bin_xy[1]
 
         # blocking_bins = cur_stack[target_bin + 1:]
 
-        adjacent_stack = [n for m in [(cur_y + i, cur_y - i) for i in range(1, LENGTH)] for n in m if 0 <= n <= LENGTH-1]
+        adjacent_stack = [n for m in [(cur_y+i, cur_y-i) for i in range(1, LENGTH)] for n in m if 0 <= n <= LENGTH-1]
         # put blocking bins on the top of adjacent stack to form a line with length direction.
-        adjacent_place_chosen = 0
+        adjacent_place_chosen = 0  # start place blocking bins in sequence.
         time_reshuffle_blocking_bins = 0
 
-        while cur_stack.size() != target_bin+1:
+        while cur_stack.size() != stack_tier + 1:
+
             next_stack = warehouse.record[self.current_line][adjacent_stack[adjacent_place_chosen]]
 
             current_bin = cur_stack.size()
@@ -144,7 +151,6 @@ class PSB:
             # print(f"{warehouse.record[self.current_line][adjacent_stack[adjacent_place_chosen]].items}")
             # print(adjacent_stack)
 
-        self.register_reshuffle(cur_y)
         return adjacent_stack[adjacent_place_chosen+1], time_reshuffle_blocking_bins
 
     def return_blocking_bins(self, warehouse):
@@ -170,13 +176,14 @@ class PSB:
 
     def storage(self, target, warehouse):
         # down -> up -> storage place -> down -> up
+        line, target_y = target
         down_up_to_peek = self.get_vertical_transport_time(HEIGHT * height)[-1] * 2
-        time_wk2storage = self.goto(target)
+        time_wk2storage = self.goto((line, target_y-1))
         st = warehouse.record[target[0]][target[1]]
         drop_off_up = self.get_vertical_transport_time((HEIGHT - (st.size()+1)) * height)[-1] * 2
         total_time = down_up_to_peek + time_wk2storage + drop_off_up + t_lu * 2
 
-        return  total_time
+        return total_time
 
     def update_dwell_point(self, destination):
         self.current_place = destination
