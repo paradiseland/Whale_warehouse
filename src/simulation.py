@@ -2,6 +2,7 @@
 import logging
 import simpy
 import random
+import numpy as np
 from src.cell import Cell
 from warehouse import Warehouse
 from PST import PST
@@ -85,12 +86,19 @@ class Simulation:
         # ARRIVAL: designated place.
 
         order_place, stack_tier = self.warehouse.rand_place()  # (x, y), z
+
         logging.info(
             "{:10.2f}, {} target x,y={}, tier={}".format(
                 env.now, name, order_place, stack_tier))
         current_line = order_place[0]
         target_y = order_place[1]
         warehouse_record = self.warehouse.record
+        logging.debug("{} current stack size :{}".format(name, warehouse_record[current_line][target_y].size()))
+        logging.debug("{} target tier : {}".format(name, stack_tier))
+        if current_line == 0:
+            logging.debug("line 0, target [{}], target tier [{}]".format(target_y, stack_tier))
+            logging.debug("current state: {}, sum={}".format(
+                    [i.size() for i in warehouse_record[current_line]], sum([i.size() for i in warehouse_record[current_line]])))
         if self.psbs.get_line_state()[current_line]:
             logging.info("{:10.2f}, this line has a psb.".format(env.now))
             psb = self.psbs.fleet[current_line]
@@ -115,9 +123,13 @@ class Simulation:
                     logging.info(
                         "{:10.2f}, [psb_{}] has arrived at the target place.".format(
                             env.now, current_line))
-
+                    if warehouse_record[current_line][target_y].is_peek(stack_tier):
+                        pass
+                    else:
+                        stack_tier = warehouse_record[current_line][target_y].size()-1
                     time_retrieve2workstation = psb.retrieve_target_bin_to_workstation(
                         stack_tier, order_place[1])
+                    self.warehouse.record[current_line][target_y].pop()
                     yield env.timeout(time_retrieve2workstation)
                     logging.info(
                         "{:10.2f}, [psb_{}] has transported {} at the target place.".format(
@@ -135,7 +147,12 @@ class Simulation:
                     logging.info(
                         "{:10.2f}, [psb_{}] has arrived at the retrieve point {}.".format(
                             env.now, current_line, order_place))
-
+                    logging.debug("{} current stack size :{}".format(name, warehouse_record[current_line][target_y].size()))
+                    logging.debug("{} target tier : {}".format(name, stack_tier))
+                    if warehouse_record[current_line][target_y].size() > stack_tier:
+                        pass
+                    else:
+                        stack_tier = np.random.choice(warehouse_record[current_line][target_y].size()-1)
                     time_reshuffle_return_go = psb.get_bin_with_immediate_return(
                         warehouse, order_place, stack_tier)
                     yield env.timeout(time_reshuffle_return_go)
@@ -177,7 +194,7 @@ class Simulation:
                         env.now, name))
         choose_height = self.warehouse.HEIGHT
 
-        while choose_height > self.warehouse.HEIGHT_AVAILABLE:
+        while choose_height >= self.warehouse.HEIGHT_AVAILABLE:
             target_y = random.randint(0, self.warehouse.LENGTH-1)
             choose_height = self.warehouse.record[line][target_y].size()
 
@@ -198,6 +215,7 @@ class Simulation:
                 # label_psb_start = env.now
 
                 time_store = psb.storage((line, target_y), self.warehouse)
+                self.warehouse.record[line][target_y].push(1)
                 yield env.timeout(time_store)
                 logging.info(
                         "{:10.2f}, {}_store has been finished".format(
@@ -253,5 +271,6 @@ if __name__ == "__main__":
         workstations,
         workstation_resource)
 
-    simulation_time = 60 * 60
+    # simulation_time = 60 * 60 * 8 * 22 * 12
+    simulation_time = 60 * 60 * 10
     env.run(simulation_time)

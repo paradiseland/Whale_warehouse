@@ -65,37 +65,30 @@ class Warehouse:
         Return x_y place, stack tier
         """
         stack_size = 0
+        share = self.get_stacks_state / sum(self.get_stacks_state)
+        cum_sum = share.cumsum().reshape(self.WIDTH, self.LENGTH)
+
         while stack_size == 0:
             tmp = np.random.random()
-            share = self.get_stacks_state/sum(self.get_stacks_state)
-
-            cum_sum = share.cumsum().reshape(self.WIDTH, self.LENGTH)
             left = np.argwhere(cum_sum >= tmp)
-            place = (left[0][0], left[0][0])
+            place = (left[0][0], left[0][1])
             stack_tier = np.random.choice(self.record[place[0]][place[1]].size())
             stack_size = self.record[place[0]][place[1]].size()
+
+        if self.record[place[0]][place[1]].size() > stack_tier:
+            pass
+        else:
+            raise IndexError
         # print(f"target tier = {stack_tier}, peek = {stack_size}")
 
-        # try:
-        #     left = tuple(np.argwhere(cum_sum < tmp + 1)[-1])
-        #     pre_place = (left[0][-1], left[1][-1])
-        #
-        # except IndexError:
-        #     pre_place = False
-        # # while self.get_stacks_state[tmp] == 0:
-        # # if np.argwhere(cum_sum >= tmp) ==
-        # place = tuple(np.argwhere(cum_sum > tmp)[0])
-        # if not pre_place:
-        #     stack_tier = tmp - 1
-        # else:
-        #     stack_tier = tmp - cum_sum[pre_place]-1
-
         return place, stack_tier
+
+    def rand_store(self, cur_line):
+
+        return 0
 
 
 if __name__ == '__main__':
     cell = Cell()
     warehouse = Warehouse(cell)
-    print('test')
     m = warehouse.rand_place()
-    print('test')

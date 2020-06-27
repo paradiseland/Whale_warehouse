@@ -85,14 +85,18 @@ class PSB:
         reshuffle -> target bin go to temporarily place -> return blocking bins -> go to workstation.
         """
         target_bin_new_stack_y, time_reshuffle = self.reshuffle_blocking_bin(warehouse, xy, stack_tier)
-        # logging.debug(f"current line = {self.current_line}, target y = {target_bin_new_stack_y}, xy = {xy}")
+#         # logging.debug(f"current line = {self.current_line}, target y = {target_bin_new_stack_y}, xy = {xy}")
         time_target_bin_temporarily = self.transport_bin_to_destination(
                 stack_tier,
                 warehouse.record[self.current_line][target_bin_new_stack_y].size(), xy[1], target_bin_new_stack_y)
-        time_return_blocking_bins = self.return_blocking_bins(warehouse)
+        warehouse.record[xy[0]][xy[1]].pop()
+        warehouse.record[xy[0]][target_bin_new_stack_y].push(1)
+        time_return_blocking_bins = self.return_blocking_bins(warehouse, xy[1])
         time_to_temporarily = self.get_horizontal_transport_time(abs(target_bin_new_stack_y-xy[1])*length)[-1]+t_lu*2
         time_to_workstation = self.retrieve_target_bin_to_workstation(
                 warehouse.record[self.current_line][target_bin_new_stack_y].size(), target_bin_new_stack_y)
+        warehouse.record[xy[0]][target_bin_new_stack_y].pop()
+
         total_time = time_reshuffle + time_target_bin_temporarily + time_return_blocking_bins\
                         + time_to_temporarily + time_to_workstation
 
@@ -121,16 +125,20 @@ class PSB:
         """
         by reshuffle the bin of certain stack, get the target bin blocking by some bins.
         """
-        cur_stack = warehouse.record[designated_bin_xy[0]][designated_bin_xy[1]]
-        cur_y = designated_bin_xy[1]
 
+        cur_stack = warehouse.record[designated_bin_xy[0]][designated_bin_xy[1]]
+        logging.debug("current stack size :{}".format(cur_stack.size()))
+        logging.debug("target tier : {}".format(stack_tier))
+        cur_y = designated_bin_xy[1]
+        # logging.debug("sum of this line = {}".format(sum([i.size() for i in warehouse.record[designated_bin_xy[0]]])))
+        # logging.debug("[{}] line state: {}".format(designated_bin_xy[0], [i.size() for i in warehouse.record[designated_bin_xy[0]]]))
         # blocking_bins = cur_stack[target_bin + 1:]
 
         adjacent_stack = [n for m in [(cur_y+i, cur_y-i) for i in range(1, LENGTH)] for n in m if 0 <= n <= LENGTH-1]
         # put blocking bins on the top of adjacent stack to form a line with length direction.
         adjacent_place_chosen = 0  # start place blocking bins in sequence.
         time_reshuffle_blocking_bins = 0
-
+        # logging.debug("cur stack [{}] size : {} , and target tier is [{}]".format(cur_y, cur_stack.size(), stack_tier))
         while cur_stack.size() != stack_tier + 1:
 
             next_stack = warehouse.record[self.current_line][adjacent_stack[adjacent_place_chosen]]
@@ -139,35 +147,53 @@ class PSB:
             next_bin = next_stack.size() + 1
             if next_stack.size() < HEIGHT_AVAILABLE:
                 self.register_reshuffle(adjacent_stack[adjacent_place_chosen])
+                # logging.debug("cur_stack [{}] not poped, size:{}".format(cur_y, cur_stack.size()))
                 cur_stack.pop()
-                next_stack.items.append(1)
+                # logging.debug("cur_stack [{}] poped, size{}".format(cur_y, cur_stack.size()))
+                # logging.debug("next stack [{}] not pushed, size:{}".format(adjacent_stack[adjacent_place_chosen], next_stack.size()))
+
+                next_stack.push(1)
+                # logging.debug("******next stack [{}] pushed, size:{}".format(adjacent_stack[adjacent_place_chosen], next_stack.size()))
                 time_reshuffle_blocking_bins += self.transport_bin_to_destination(
                         cur_y, adjacent_stack[adjacent_place_chosen], current_bin, next_bin)
             else:
                 pass
+#                 # logging.debug("next stack [{}] size: {} and be skipped".format(adjacent_stack[adjacent_place_chosen], next_stack.size()))
+
             adjacent_place_chosen += 1
             # print(f"adjacent_chosen = {adjacent_place_chosen},
             # {adjacent_stack[adjacent_place_chosen]},{self.current_line}")
             # print(f"{warehouse.record[self.current_line][adjacent_stack[adjacent_place_chosen]].items}")
             # print(adjacent_stack)
+        # self.register_reshuffle(cur_y)
+        # self.reshuffle_task.append(cur_y)
+#         #     logging.debug("adjacent_place_chosen = {}".format(adjacent_place_chosen))
+#         logging.debug("sum of this line = {}".format(sum([i.size() for i in warehouse.record[designated_bin_xy[0]]])))
 
-        return adjacent_stack[adjacent_place_chosen+1], time_reshuffle_blocking_bins
+        return adjacent_stack[adjacent_place_chosen], time_reshuffle_blocking_bins
 
-    def return_blocking_bins(self, warehouse):
-        previous_y = self.reshuffle_task.pop()
-        current_stack = warehouse.record[self.current_line][previous_y]
-        time_return = 0
+    def return_blocking_bins(self, warehouse, last_y):
+        """
+        when the reshuffle task is not null, we came back and complete the reshuffling
+        """
+        # previous_y = self.reshuffle_task.pop()
+        previous_stack = warehouse.record[self.current_line][last_y]
+        time_return_blocking = 0
 
         while len(self.reshuffle_task) > 0:
-            next_task = self.reshuffle_task.pop()
-            current_stack.items.append(1)
-            new_stack = current_stack.size()
-            time_return += self.transport_bin_to_destination(
-                    next_task, previous_y, warehouse.record[self.current_line][next_task].size()+1, new_stack)
-
-        return time_return
+            next_y = self.reshuffle_task.pop()
+            warehouse.record[self.current_line][next_y].pop()
+            previous_stack.items.append(1)
+            new_stack_tier = previous_stack.size()
+            time_return_blocking += self.transport_bin_to_destination(
+                    next_y, last_y, warehouse.record[self.current_line][next_y].size()+1, new_stack_tier)
+        return time_return_blocking
 
     def transport_bin_to_destination(self, previous_y, new_y, previous_stack, new_stack):
+        """
+        transport the blocking bins to peek of adjacent stack.
+        the current place of PSB doesn't change
+        """
         down_up_to_peek = self.get_vertical_transport_time((HEIGHT-previous_stack)*height)[-1] * 2
         horizon_to_back_adjacent = self.get_horizontal_transport_time((abs(previous_y-new_y))*length)[-1] * 2
         drop_off_up = self.get_vertical_transport_time((HEIGHT-new_stack)*height)[-1] * 2
@@ -189,11 +215,8 @@ class PSB:
         self.current_place = destination
 
     def register_reshuffle(self, y: int):
-        # reshuffle task is recorded in the form of int of y coordinate.
+        # reshuffle task is recorded in the form of int of y coordinate + [last y].
         self.reshuffle_task.append(y)
-
-    # def clear_reshuffle(self):
-    #     self.reshuffle_task = []
 
     def change_line(self, pre_line, new_line, pst):
         time_change_line = pst.change_line(pre_line, new_line, self)
